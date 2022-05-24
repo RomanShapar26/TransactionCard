@@ -29,7 +29,7 @@ public class TestCardMoneyTransfer {
         val dashboardPage = new DashboardPage();
         val firstCardBalanceStart = dashboardPage.getFirstCardBalance();
         val secondCardBalanceStart = dashboardPage.getSecondCardBalance();
-        int amount = 2_508;
+        int amount = 2_761;
 
         val transactionPage = pushSecondCardButton();
         transactionPage.transferMoney(amount, getFirstCardNumber());
@@ -43,18 +43,17 @@ public class TestCardMoneyTransfer {
     @Test
     public void shouldTransferMoneyFromSecondCardToFirstCard() {
         val dashboardPage = new DashboardPage();
-        val firstCardBalanceStart = dashboardPage.getSecondCardBalance();
-        val secondCardBalanceStart = dashboardPage.getFirstCardBalance();
-        int amount = 8_496;
+        val firstCardBalanceStart = dashboardPage.getFirstCardBalance();
+        val secondCardBalanceStart = dashboardPage.getSecondCardBalance();
+        int amount = 928;
 
         val transactionPage = pushFirstCardButton();
         transactionPage.transferMoney(amount, getSecondCardNumber());
-        val secondCardBalanceResult = secondCardBalanceStart + amount;
-        val firstCardBalanceResult = firstCardBalanceStart - amount;
+        val firstCardBalanceResult = firstCardBalanceStart + amount;
+        val secondCardBalanceResult = secondCardBalanceStart - amount;
 
-        assertEquals(secondCardBalanceResult, dashboardPage.getSecondCardBalance());
         assertEquals(firstCardBalanceResult, dashboardPage.getFirstCardBalance());
+        assertEquals(secondCardBalanceResult, dashboardPage.getSecondCardBalance());
     }
-
 
 }
